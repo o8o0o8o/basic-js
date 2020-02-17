@@ -1,4 +1,7 @@
-module.exports = function countCats(/* matrix */) {
-  throw 'Not implemented';
-  // remove line with error and write your code here
+module.exports = function countCats(backyard) {
+  return backyard.reduce( (cats, levels) => 
+    cats + levels.reduce( (catsOnLevel, level) => 
+      (catsOnLevel + (level == "^^" ? 1 : 0) ), 
+    0), 
+  0);
 };
