@@ -4,6 +4,7 @@ module.exports = function transform(arr) {
 
   let result = [];
   
+  //main idea: skip flags, concentrate on elements and what's them surround
   for (let i = 0; i < arr.length; i++) {
     switch(arr[i]) {
       case '--discard-next':
