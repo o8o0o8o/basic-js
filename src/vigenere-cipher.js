@@ -43,13 +43,11 @@ class VigenereCipheringMachine {
       if (j === k.length) j = 0;
     }
 
-    if (this.reverse === false) result.reverse();
-
-    return result.join('');
+    return (this.reverse === false) ? result.reverse().join('') : result.join('');
   }
 
-  decrypt(encryptedMessage, key) {
-    if(!encryptedMessage ||
+  decrypt(message, key) {
+    if(!message ||
        !key) throw new Error();
     
     //build array with eng alphabet
@@ -59,7 +57,7 @@ class VigenereCipheringMachine {
     }
 
     // reformat params
-    let m = encryptedMessage.toUpperCase().split('');
+    let m = message.toUpperCase().split('');
     let k = key.toUpperCase().split('');
 
     // calculate result
@@ -87,9 +85,7 @@ class VigenereCipheringMachine {
       if (j === k.length) j = 0;
     }
 
-    if (this.reverse === false) result.reverse();
-
-    return result.join('');
+    return (this.reverse === false) ? result.reverse().join('') : result.join('');
   }
 }
 
