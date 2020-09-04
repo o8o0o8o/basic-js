@@ -1,40 +1,32 @@
 module.exports = function transform(arr) {
-  
   if (!Array.isArray(arr)) throw new Error();
 
-  let result = [];
-  
-  //main idea: skip flags, concentrate on elements and what's them surround
-  for (let i = 0; i < arr.length; i++) {
-    switch(arr[i]) {
+  return arr.reduce((result, element, i) => {
+    switch(element) {
       case '--discard-next':
       case '--discard-prev':
       case '--double-next':
       case '--double-prev':
-        continue;
+        return result;
     }
 
-    result.push(arr[i]);
+    if (arr[i - 1] === '--discard-next') {
+      return result;
+    }
+
+    (arr[i-1] === '--double-next')
+      ? result.push(element, element)
+      : result.push(element);
 
     switch(arr[i+1]) {
       case '--double-prev':
-        result.push(arr[i]);
+        result.push(element);
         break;
       case '--discard-prev':
         result.splice(result.length-1,1);
         break;
     }
 
-    switch(arr[i-1]) {
-      case '--double-next':
-        result.push(arr[i]);
-        break;
-      case '--discard-next':
-        result.splice(result.length-1,1);
-        break;
-    }
-  }
-
-  return result;
-
+    return result;
+  }, []);
 };

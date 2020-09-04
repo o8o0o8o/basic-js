@@ -88,7 +88,7 @@ Both parameters are `numbers`.
 
 `calculateHanoi` function returns an object with 2 properties:
 * `turns` (minimum `number` of turns to solve the puzzle)
-* `seconds` (minimum `number` of **seconds** to solve the puzzle at a given `turnsSpeed`).
+* `seconds` (minimum `number` of **seconds** to solve the puzzle at a given `turnsSpeed`, seconds must be an integer, **rounded down**)
 
 You don't need to validate parameters.
 
@@ -98,7 +98,7 @@ Write your code in `src/hanoi-tower.js`.
 
 ### **Transform array**
 
-Your task is to implement the function `transform(arr)` that takes an `array` and returns it **transformed**, based on the **control sequences** that it contains.
+Your task is to implement the function `transform(arr)` that takes an `array` and returns **transformed** array, based on the **control sequences** that `arr` contains.
 **Control sequences** are defined `string` elements of the mentioned `array`:
 * `--discard-next` excludes the next element of the array from the transformed array.
 * `--discard-prev` excludes the previous element of the array from the transformed array.
@@ -111,7 +111,7 @@ For example:
 
 `transform([1, 2, 3, '--discard-prev', 4, 5])` => `[1, 2, 4, 5]`
 
-Control sequences **do not fall** into the transformed array. Control sequences in initial array do not occur in a row. If there is **no element** next to the control sequence **to which it can be applied**, **it does nothing**. The function should throw an `Error` if the `arr` is not an `Array`.
+The function must not affect inital array. Control sequences are applied **from left to right**. Control sequences **do not fall** into the transformed array. Control sequences in initial array don't occur in a row. If there is **no element** next to the control sequence **to which it can be applied**, **it does nothing**. The function should throw an `Error` if the `arr` is not an `Array`.
 
 Write your code in `src/transform-array.js`.
 
@@ -202,7 +202,7 @@ Each instance of `VigenereCipheringMachine` must have 2 methods: `encrypt` and `
 
 `decrypt` method accepts 2 parameters: `encryptedMessage` (`string` to decode) and `key` (`string`-keyword).
 
-These parameters for both methods are **mandatory**. If at least one of them has not been given, an `Error` must be thrown.
+These parameters for both methods are **mandatory**. If at least one of them has not been given, an `Error` must be thrown. The text returned by these methods must be **uppercase**. Machines encrypt and decrypt **only latin alphabet**.
 
 You don't need to validate value sent to `constructor` and to `encrypt` and `decrypt` methods (except throwing an `Error` on absence of argument for these methods).
 
@@ -217,7 +217,7 @@ Write your code in `src/vigenere-cipher.js`.
 4. Go to folder `basic-js`  
 5. To install all dependencies use [`npm install`](https://docs.npmjs.com/cli/install)  
 6. Run `npm run test` in command line.
-7. You will see the number of passing and failing tests. 100% of passing tests is equal to 100p in score  
+7. You will see the number of pending, passing and failing tests. 100% of passing tests is equal to 100p in score  
 
 ---
 
@@ -230,7 +230,7 @@ Write your code in `src/vigenere-cipher.js`.
 ---
 
 #### Notes
-1. We recommend you to use nodejs of version 10 or lower. If you use any of features, that does not supported by node v10, score won't be submitted.
+1. We recommend you to use nodejs of version 12 or lower. If you use any of features, that does not supported by node v12, there may be problems with task submit.
 2. Please, be sure that each of your tests is limited to 30 sec.
 
 ---
